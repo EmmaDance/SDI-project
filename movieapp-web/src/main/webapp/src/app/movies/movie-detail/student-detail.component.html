@@ -1,0 +1,35 @@
+<div *ngIf="movie">
+  <label>Title: </label> {{movie.title}}
+  <br>
+  <label>Year: </label> {{movie.year}}
+  <br>
+  <label>Cast: </label>
+  <br>
+
+  <ol class="students">
+    <li *ngFor="let actor of movie.actors"> {{ actor.name }} -- {{ actor.rating}}</li>
+  </ol>
+
+  <br>
+
+  <button (click)="addMore()">Add More Actors</button>
+  <div *ngIf="addMoreB">
+    <!--<select [(ngModel)]="selectedActor" >-->
+      <!--<option disabled selected value></option>-->
+      <!--<option [value]="actor" *ngFor="let actor of actors">{{actor.name}}</option>-->
+    <!--</select>-->
+
+
+    <select [(ngModel)]="selectedActor">
+      <option disabled selected>Select</option>
+      <option *ngFor="let actor of actors" [ngValue]="actor">{{actor.name}}</option>
+    </select>
+
+    <br>
+    <button (click)="add()">Add</button>
+  </div>
+
+
+  <!--<button (click)="goBack()">Back</button>-->
+
+</div>

@@ -1,0 +1,33 @@
+<div *ngIf="visible">
+  <label>Year </label>
+  <input type="text" [(ngModel)]="movieYear">
+  <br>
+<form name="year" >
+  <input (change)="showMovies()" [(ngModel)]="comparator" name="year" type="radio" value="1" >Before<br/>
+  <input (change)="showMovies()" [(ngModel)]="comparator"  name="year" type="radio" value="2"  >After<br/>
+</form>
+
+</div>
+<div *ngIf="visibleMovies">
+  <ol class="movies">
+    <li *ngFor="let movie of movies">
+      {{movie.title}} {{movie.year}}
+    </li>
+  </ol>
+  <button (click)="showCast()">Show Cast</button>
+</div>
+
+<div *ngIf="visibleCast">
+  <ol class="movies">
+    <li *ngFor="let movie of moviesWithActors">
+      {{movie.title}} {{movie.year}}
+      <ul >
+        <li *ngFor="let actor of movie.actors">
+        {{actor.name}} -  {{actor.rating}} <button (click)="delete(actor)">Delete</button>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+
